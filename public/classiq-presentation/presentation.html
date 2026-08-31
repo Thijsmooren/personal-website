@@ -103,5 +103,23 @@
       window.addEventListener('keydown',e=>{if(e.key==='Escape'&&!detail.hidden){closeDetail();return}if(!detail.hidden)return;if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();move(1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();move(-1)}});window.addEventListener('wheel',e=>{if(!detail.hidden)return;if(Math.abs(e.deltaY)>20)move(e.deltaY>0?1:-1)},{passive:true});window.addEventListener('touchstart',e=>startY=e.changedTouches[0].screenY,{passive:true});window.addEventListener('touchend',e=>{if(!detail.hidden)return;const d=startY-e.changedTouches[0].screenY;if(Math.abs(d)>45)move(d>0?1:-1)},{passive:true});show(0);
     })();
   </script>
+  <script>
+    // On touch screens, reserve vertical swipes for scrolling within a slide.
+    (() => {
+      if (!window.matchMedia('(max-width: 720px)').matches) return;
+      let startX = 0;
+      let startY = 0;
+      window.addEventListener('touchstart', event => {
+        startX = event.changedTouches[0].screenX;
+        startY = event.changedTouches[0].screenY;
+      }, { capture: true, passive: true });
+      window.addEventListener('touchend', event => {
+        const end = event.changedTouches[0];
+        const horizontal = Math.abs(end.screenX - startX);
+        const vertical = Math.abs(end.screenY - startY);
+        if (vertical > horizontal) event.stopImmediatePropagation();
+      }, { capture: true, passive: true });
+    })();
+  </script>
 </body>
 </html>
