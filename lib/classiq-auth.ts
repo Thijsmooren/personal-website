@@ -1,0 +1,5 @@
+const encoder = new TextEncoder();
+function toHex(buffer: ArrayBuffer) { return Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join(""); }
+async function signature(value: string, secret: string) { const key = await crypto.subtle.importKey("raw", encoder.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]); return toHex(await crypto.subtle.sign("HMAC", key, encoder.encode(value))); }
+export async function createClassiqSession(password: string) { const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60 * 8; const payload = String(expiresAt); return `${payload}.${await signature(payload, password)}`; }
+export async function hasValidClassiqSession(token: string | undefined, password: string | undefined) { if (!token || !password) return false; const [expiresAt, tokenSignature] = token.split("."); if (!expiresAt || !tokenSignature || Number(expiresAt) < Math.floor(Date.now() / 1000)) return false; return tokenSignature === await signature(expiresAt, password); }
