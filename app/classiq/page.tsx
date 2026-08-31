@@ -1,1 +1,11 @@
-export default function ClassiqPage() { return <main className="classiq-page"><article className="classiq-card"><p className="classiq-label">Classiq · private presentation</p><h1>The presentation is being prepared.</h1><p>This private space is ready for the Classiq application slides. The presentation will appear here shortly.</p></article></main>; }
+export default function ClassiqPage() {
+  return (
+    <main className="classiq-presentation-frame">
+      <iframe
+        title="Thijs Mooren — Classiq presentation"
+        src="/classiq-presentation/presentation.html"
+        allowFullScreen
+      />
+    </main>
+  );
+}
