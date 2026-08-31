@@ -29,8 +29,9 @@
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     /* Mobile presentation mode: content can grow instead of being clipped. */
     @media (max-width:720px){
-      html,body{overflow:auto;overscroll-behavior-y:none}
-      .slide{height:auto;min-height:100svh;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+      html,body{height:auto;min-height:100%;overflow-y:auto;overscroll-behavior-y:none}
+      .deck{height:auto;min-height:100svh;overflow:visible}
+      .slide{height:auto;min-height:100svh;overflow:visible}
       .slide-inner{height:auto;min-height:100svh;padding-bottom:6.5rem}
       .topline{position:sticky;top:0;padding:1rem 0 .8rem;background:linear-gradient(var(--black) 72%,transparent);left:auto;right:auto}
       .light .topline{background:linear-gradient(var(--ivory) 72%,transparent)}
