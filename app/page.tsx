@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const photos = [
-  { src: "/images/thijs-portrait.jpg", alt: "Thijs Mooren" },
-  { src: "/images/thijs-at-desk.jpeg", alt: "Thijs Mooren at work" },
-  { src: "/images/thijs-outside.jpg", alt: "Portrait of Thijs Mooren" },
+  { src: "/thijs-portrait.jpg", alt: "Thijs Mooren" },
+  { src: "/thijs-at-desk.jpeg", alt: "Thijs Mooren at work" },
+  { src: "/thijs-outside.jpg", alt: "Portrait of Thijs Mooren" },
 ];
 
 export default function Home() {
