@@ -10,7 +10,7 @@ body { background: var(--paper); color: var(--ink); font-family: Arial, Helvetic
 .wip-hero { flex: 1; display: grid; align-content: center; padding: 11vh 0 5vh; }
 .wip-kicker { margin: 0 0 clamp(18px, 3vw, 42px); font: 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 .wip-hero h1 { max-width: 1200px; margin: 0; font-size: clamp(88px, 17vw, 290px); font-weight: 700; letter-spacing: -.095em; line-height: .73; }
-.wip-hero h1.type-name { font-size: clamp(48px, 15vw, 290px); white-space: nowrap; }
+.wip-hero h1.type-name { font-size: clamp(48px, 15vw, 290px); letter-spacing: -.04em; line-height: .85; white-space: nowrap; }
 .type-cursor { display: inline-block; width: .07em; height: .7em; margin-left: .1em; background: currentColor; animation: type-blink 1s steps(1) infinite; }
 @keyframes type-blink { 50% { opacity: 0; } }
 .wip-intro { max-width: 255px; margin: clamp(38px, 8vw, 100px) 0 0 auto; font: 400 clamp(18px, 1.7vw, 27px)/1.12 Georgia, serif; }

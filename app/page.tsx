@@ -36,8 +36,8 @@ export default function Home() {
   return (
     <main className="wip-page">
       <section className="wip-hero">
-        <h1 className="type-name" aria-label="Thijs Matthias Ndesario">
-          <span aria-hidden="true">{text}<span className="type-cursor" /></span>
+        <h1 className="type-name" aria-label="Thijs Matthias Ndesario Mooren">
+          <span aria-hidden="true">{text}<span className="type-cursor" /><br />MOOREN</span>
         </h1>
       </section>
     </main>
