@@ -41,7 +41,6 @@ export default function Home() {
         </h1>
       </section>
       <footer className="wip-footer contact-footer">
-        <span>Contact me</span>
         <span className="contact-links">
           <a href="mailto:mnm@matthiasndesario.com" className="contact-email">mnm@matthiasndesario.com</a>
           <a href="https://www.linkedin.com/in/thijs-mooren/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
