@@ -15,22 +15,23 @@ describe("Frascati discovery", () => {
   });
 
   it("validates all known choices and preserves literal export text", () => {
-    const answers = emptyAnswers("Rachel");
-    answers["7"].selected = ["Event and campaign planning", "Media, sponsor or partner coordination", "Tenant communication"];
-    answers["19"].text = '<script>alert("x")</script>';
-    expect(validateAnswers(answers, "Rachel")).toBe(true);
+    const answers = emptyAnswers();
+    answers["3"].selected = ["Marketing and content", "Events and campaigns"];
+    answers["6"].text = '<script>alert("x")</script>';
+    expect(validateAnswers(answers)).toBe(true);
     const text = exportAnswers(answers, "Rachel", "2026-11-23");
-    expect(text).toContain('19. Anything else we should know before the call?\n<script>alert("x")</script>');
+    expect(text).toContain('6. Is there anything about AI you would like to ask or discuss?\n<script>alert("x")</script>');
     expect(text).toContain("Respondent: Rachel");
-    const tooMany = structuredClone(answers);
-    tooMany["7"].selected.push("Social media posts and captions");
-    expect(validateAnswers(tooMany, "Rachel")).toBe(false);
+    const invalidChoice = structuredClone(answers);
+    invalidChoice["3"].selected.push("Unknown area");
+    expect(validateAnswers(invalidChoice)).toBe(false);
     const unknown = structuredClone(answers) as typeof answers;
-    unknown["20"] = { ...unknown["19"] };
-    expect(validateAnswers(unknown, "Rachel")).toBe(false);
+    unknown["20"] = { ...unknown["6"] };
+    expect(validateAnswers(unknown)).toBe(false);
     const long = structuredClone(answers);
-    long["19"].text = "x".repeat(1501);
-    expect(validateAnswers(long, "Rachel")).toBe(false);
-    expect(discovery.questions).toHaveLength(19);
+    long["6"].text = "x".repeat(1501);
+    expect(validateAnswers(long)).toBe(false);
+    expect(validateAnswers(emptyAnswers())).toBe(true);
+    expect(discovery.questions).toHaveLength(6);
   });
 });

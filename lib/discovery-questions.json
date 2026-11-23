@@ -1,321 +1,39 @@
 {
   "client": "Frascati Centre",
   "ownerName": "Matthias",
-  "people": {
-    "Rachel": {
-      "title": "Marketing Director",
-      "note": "Your view on campaigns, content and partnerships is especially useful."
-    },
-    "Viv": {
-      "title": "Centre Director",
-      "note": "Your view on centre operations, tenants and campaigns is especially useful."
-    }
-  },
-  "steps": [
-    {
-      "title": "About you and AI",
-      "ids": [
-        2,
-        3,
-        4,
-        5
-      ]
-    },
-    {
-      "title": "Your work",
-      "ids": [
-        6,
-        7,
-        8
-      ]
-    },
-    {
-      "title": "One task to improve",
-      "ids": [
-        9,
-        10,
-        11,
-        12
-      ]
-    },
-    {
-      "title": "A good first step",
-      "ids": [
-        13,
-        14,
-        15,
-        16
-      ]
-    },
-    {
-      "title": "Optional: we can also cover these together",
-      "ids": [
-        17,
-        18,
-        19
-      ]
-    }
-  ],
   "questions": [
     {
       "id": 1,
-      "text": "Who is filling this in?",
+      "text": "How often do you use AI tools such as ChatGPT or Copilot for work?",
       "type": "single",
-      "options": [
-        "Rachel",
-        "Viv"
-      ]
+      "options": ["Never", "I have tried them once or twice", "Occasionally", "Regularly", "Not sure"]
     },
     {
       "id": 2,
-      "text": "How often do you use AI tools such as ChatGPT or Copilot?",
-      "type": "single",
-      "options": [
-        "Never",
-        "Tried it once or twice",
-        "A few times a month",
-        "Weekly",
-        "Daily",
-        "Not sure"
-      ]
+      "text": "How do you feel about using AI at work?",
+      "type": "multi",
+      "options": ["Curious", "Interested but unsure where to start", "I already find it useful", "Concerned about mistakes", "Concerned about privacy", "Sceptical", "Other"]
     },
     {
       "id": 3,
-      "text": "Which AI tools have you used?",
+      "text": "Which areas of your work would you most like to make easier?",
       "type": "multi",
-      "options": [
-        "ChatGPT",
-        "Microsoft Copilot",
-        "Google Gemini",
-        "Claude",
-        "AI features inside other software",
-        "None yet",
-        "Other"
-      ]
+      "options": ["Marketing and content", "Events and campaigns", "Communication with tenants, partners or customers", "Planning and coordination", "Centre operations", "Admin and reporting", "Other"]
     },
     {
       "id": 4,
-      "text": "How confident do you feel using AI for work?",
-      "type": "single",
-      "options": [
-        "1 Not at all",
-        "2 A little",
-        "3 Fairly confident",
-        "4 Very confident"
-      ]
+      "text": "What takes more time than it should in a typical week?",
+      "type": "text"
     },
     {
       "id": 5,
-      "text": "How do you feel about using AI at work?",
-      "type": "multi",
-      "options": [
-        "Curious",
-        "Excited about saving time",
-        "Unsure where to start",
-        "Worried about mistakes",
-        "Worried about data or privacy",
-        "Sceptical it will help",
-        "Other"
-      ],
-      "help": "There are no wrong answers."
+      "text": "What would you like to get from our conversation?",
+      "type": "text"
     },
     {
       "id": 6,
-      "text": "Which parts of your role are most relevant to this conversation?",
-      "type": "multi",
-      "options": [
-        "Marketing and content",
-        "Media or brand partnerships",
-        "Centre management",
-        "Tenant liaison",
-        "Events and community",
-        "Commercialisation",
-        "Operations and facilities",
-        "Finance and administration",
-        "Other"
-      ],
-      "help": "Choose what you actually work on; these are not assumptions."
-    },
-    {
-      "id": 7,
-      "text": "Which tasks take up most of your time each week?",
-      "type": "multi",
-      "max": 3,
-      "options": [
-        "Social media posts and captions",
-        "Website updates and news items",
-        "Event and campaign planning",
-        "Retailer offers and promotions",
-        "Media, sponsor or partner coordination",
-        "Tenant communication",
-        "Community initiative coordination",
-        "Campaign, footfall or performance reports",
-        "Customer questions, messages or reviews",
-        "Internal reports, meetings and notes",
-        "Other"
-      ],
-      "help": "Choose up to three."
-    },
-    {
-      "id": 8,
-      "text": "How much of your week goes to repetitive admin?",
-      "type": "single",
-      "options": [
-        "Less than 10%",
-        "10 to 25%",
-        "25 to 50%",
-        "More than half",
-        "Not sure"
-      ]
-    },
-    {
-      "id": 9,
-      "text": "Which one task would you most like to make easier?",
-      "type": "single",
-      "optionsFrom": 7,
-      "help": "Pick just one to start with."
-    },
-    {
-      "id": 10,
-      "text": "How often does this task happen?",
-      "type": "single",
-      "options": [
-        "Several times a day",
-        "Daily",
-        "A few times a week",
-        "Weekly",
-        "Monthly",
-        "Irregularly",
-        "Not sure"
-      ]
-    },
-    {
-      "id": 11,
-      "text": "How long does it take each time?",
-      "type": "single",
-      "options": [
-        "Under 15 minutes",
-        "15 to 30 minutes",
-        "30 to 60 minutes",
-        "1 to 2 hours",
-        "More than 2 hours",
-        "Not sure"
-      ]
-    },
-    {
-      "id": 12,
-      "text": "What makes it slow or frustrating?",
-      "type": "multi",
-      "options": [
-        "It is repetitive",
-        "Collecting input from tenants or colleagues",
-        "Coordinating partners or sponsors",
-        "Searching for information",
-        "Waiting for approvals",
-        "Starting from a blank page",
-        "Keeping the tone of voice consistent",
-        "Checking offers, dates and details",
-        "Copying information between systems",
-        "Easy to make mistakes",
-        "Other"
-      ]
-    },
-    {
-      "id": 13,
-      "text": "Which tools do you use for this task?",
-      "type": "multi",
-      "options": [
-        "Outlook or Gmail",
-        "Excel or Google Sheets",
-        "Word or Google Docs",
-        "Canva or another design tool",
-        "Social media apps",
-        "Social media scheduling tool",
-        "Email newsletter tool",
-        "Website content system",
-        "Footfall or analytics dashboard",
-        "WhatsApp or phone",
-        "Other"
-      ],
-      "help": "Optional: describe a recent example in the comment field."
-    },
-    {
-      "id": 14,
-      "text": "What would a useful first improvement give you?",
-      "type": "multi",
-      "max": 3,
-      "options": [
-        "Time saved",
-        "Fewer mistakes",
-        "A good first draft to edit",
-        "More content ideas",
-        "A consistent tone of voice",
-        "Faster replies to customers or tenants",
-        "Better overview or reporting",
-        "Easier coordination with partners",
-        "Less stress",
-        "Other"
-      ],
-      "help": "Choose up to three."
-    },
-    {
-      "id": 15,
-      "text": "What should a person always check before anything is used or sent?",
-      "type": "multi",
-      "options": [
-        "Anything published under the centre’s name",
-        "Anything sent to tenants or customers",
-        "Prices, offers and dates",
-        "Partner names and commitments",
-        "Anything involving personal data",
-        "Brand, legal or sensitive topics",
-        "Everything, at least at first",
-        "Not sure yet"
-      ]
-    },
-    {
-      "id": 16,
-      "text": "How would you like to get started?",
-      "type": "single",
-      "options": [
-        "A short demo on the call",
-        "Trying it hands-on together",
-        "A simple written guide",
-        "A ready-made prompt or template",
-        "Not sure yet"
-      ]
-    },
-    {
-      "id": 17,
-      "text": "Does your organisation have rules about AI use or data?",
-      "type": "single",
-      "options": [
-        "Yes, written guidance",
-        "Informal agreements",
-        "No",
-        "Not sure"
-      ],
-      "help": "No need to share documents."
-    },
-    {
-      "id": 18,
-      "text": "Is there information that must stay out of AI tools?",
-      "type": "multi",
-      "options": [
-        "Customer personal data",
-        "Tenant commercial information",
-        "Footfall and performance data",
-        "Contracts",
-        "Internal matters",
-        "Not sure",
-        "Other"
-      ]
-    },
-    {
-      "id": 19,
-      "text": "Anything else we should know before the call?",
-      "type": "text",
-      "help": "Deadlines, busy periods, exceptions or questions you already have."
+      "text": "Is there anything about AI you would like to ask or discuss?",
+      "type": "text"
     }
   ]
 }

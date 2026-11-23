@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import styles from "../discovery.module.css";
 
 export const metadata: Metadata = { title: "Frascati Centre | Discovery", robots: { index: false, follow: false } };
@@ -7,7 +8,7 @@ export default async function Unlock({ searchParams }: { searchParams: Promise<{
   const { error } = await searchParams;
   return (
     <main className={styles.loginPage}>
-      <div className={styles.brand}><span className={styles.brandName}>FRASCATI</span><span>CENTRE</span></div>
+      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
       <section className={styles.loginCard}>
         <p className={styles.eyebrow}>A practical starting point for AI</p>
         <h1>Before we begin</h1>

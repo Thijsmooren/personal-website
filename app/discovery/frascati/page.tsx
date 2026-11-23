@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { readDiscoverySession } from "@/lib/discovery-auth";
@@ -13,9 +14,8 @@ export default async function FrascatiDiscovery() {
   if (!person) redirect("/discovery/frascati/unlock");
   return (
     <div className={styles.page}>
-      <header className={styles.header}><div className={styles.brand}><span className={styles.brandName}>FRASCATI</span><span>CENTRE</span></div><span>Discovery</span></header>
+      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
       <DiscoveryForm person={person} />
-      <footer className={styles.footer}>Frascati Centre · A practical starting point for AI</footer>
     </div>
   );
 }
