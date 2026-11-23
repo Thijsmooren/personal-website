@@ -15,7 +15,7 @@ export default async function ResponsesPage() {
   let storageError = false;
   try { responses = await listDiscoveryResponses(); } catch { storageError = true; }
   return <main className={styles.page}>
-    <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
+    <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo-header.png" alt="Frascati Centre" width={489} height={141} priority /></div><span className={styles.headerLabel}>Private responses</span></header>
     <section className={styles.card}>
       <p className={styles.eyebrow}>Private · Frascati Centre</p>
       <h1>Responses</h1>

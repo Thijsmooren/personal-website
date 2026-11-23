@@ -14,8 +14,11 @@ export default async function FrascatiDiscovery() {
   if (!person) redirect("/discovery/frascati/unlock");
   return (
     <div className={styles.page}>
-      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
-      <DiscoveryForm person={person} />
+      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo-header.png" alt="Frascati Centre" width={489} height={141} priority /></div><span className={styles.headerLabel}>A short introduction</span></header>
+      <div className={styles.shell}>
+        <aside className={styles.sidebar}><span className={styles.sidebarLine} /><p>Frascati Centre</p><h2>A practical starting point for AI.</h2><span className={styles.sidebarBottom}>A conversation with Matthias Ndesario</span></aside>
+        <DiscoveryForm person={person} />
+      </div>
     </div>
   );
 }

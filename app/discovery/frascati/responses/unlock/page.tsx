@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Frascati responses | Private", robot
 export default async function ResponsesUnlock({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
   return <main className={styles.loginPage}>
-    <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
+      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo-header.png" alt="Frascati Centre" width={489} height={141} priority /></div><span className={styles.headerLabel}>Private responses</span></header>
     <section className={styles.loginCard}>
       <p className={styles.eyebrow}>Private responses</p>
       <h1>Open responses</h1>

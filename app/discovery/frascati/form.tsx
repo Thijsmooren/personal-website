@@ -103,14 +103,14 @@ export default function DiscoveryForm({ person }: { person: Person }) {
   </main>;
 
   if (step === -1) return <main className={styles.card}>
-    <p className={styles.eyebrow}>Frascati Centre · {person}</p><h1 ref={heading} tabIndex={-1}>A practical starting point for AI</h1>
-    <p>Welcome, {person}. These are some questions to help understand your work. This will take about 5 minutes. Feel free to skip any questions (just leave them blank). Thanks in advance.</p>
+    <p className={styles.eyebrow}>A few questions for you</p><h1 ref={heading} tabIndex={-1}>Welcome, {person}.</h1>
+    <p>These are some questions to help understand your work. This will take about 5 minutes. Feel free to skip any questions (just leave them blank). Thanks in advance.</p>
     <button type="button" className={styles.primary} onClick={() => setStep(0)}>Start</button>
   </main>;
 
   if (step === 0) return <main className={styles.card}>
-    <p className={styles.eyebrow}>{person} · Frascati Centre</p>
-    <h1 ref={heading} tabIndex={-1}>A few questions before our call</h1>
+    <p className={styles.eyebrow}>For {person}</p>
+    <h1 ref={heading} tabIndex={-1}>A few questions before seeing each other</h1>
     <p>Answer what you can. You can leave any question blank.</p>
     {discovery.questions.map(renderQuestion)}
     <div className={styles.actions}><button type="button" className={styles.secondary} onClick={() => setStep(-1)}>Back</button><button type="button" className={styles.primary} onClick={() => setStep(1)}>Review answers</button></div>

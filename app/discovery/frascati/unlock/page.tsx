@@ -8,7 +8,9 @@ export default async function Unlock({ searchParams }: { searchParams: Promise<{
   const { error } = await searchParams;
   return (
     <main className={styles.loginPage}>
-      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo.webp" alt="Frascati Centre" width={200} height={80} priority /></div></header>
+      <header className={styles.header}><div className={styles.brand}><Image src="/frascati-logo-header.png" alt="Frascati Centre" width={489} height={141} priority /></div><span className={styles.headerLabel}>A short introduction</span></header>
+      <div className={styles.shell}>
+      <aside className={styles.sidebar}><span className={styles.sidebarLine} /><p>Frascati Centre</p><h2>Before seeing each other.</h2><span className={styles.sidebarBottom}>A conversation with Matthias Ndesario</span></aside>
       <section className={styles.loginCard}>
         <p className={styles.eyebrow}>A practical starting point for AI</p>
         <h1>Before we begin</h1>
@@ -19,8 +21,9 @@ export default async function Unlock({ searchParams }: { searchParams: Promise<{
           {error && <p className={styles.error} role="alert">That name was not recognised. Please check your invitation.</p>}
           <button type="submit" className={styles.primary}>Open my questions</button>
         </form>
-      </section>
       <p className={styles.loginFootnote}>Your answers are only sent when you press Send at the end.</p>
+      </section>
+      </div>
     </main>
   );
 }
