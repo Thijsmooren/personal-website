@@ -5,7 +5,7 @@ import { readDiscoverySession } from "@/lib/discovery-auth";
 export async function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/discovery/frascati")) {
     if (request.nextUrl.pathname === "/discovery/frascati/unlock") return NextResponse.next();
-    const person = await readDiscoverySession(request.cookies.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET);
+    const person = await readDiscoverySession(request.cookies.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET || process.env.CLASSIQ_PASSWORD);
     return person ? NextResponse.next() : NextResponse.redirect(new URL("/discovery/frascati/unlock", request.url));
   }
   if (request.nextUrl.pathname === "/classiq/unlock") return NextResponse.next();

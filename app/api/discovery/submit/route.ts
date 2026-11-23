@@ -31,7 +31,7 @@ async function readBody(request: Request): Promise<unknown> {
 export async function POST(request: NextRequest) {
   const origin = request.headers.get("origin");
   if (origin !== new URL(request.url).origin) return json({ error: "Origin rejected." }, 403);
-  const person = await readDiscoverySession(request.cookies.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET);
+  const person = await readDiscoverySession(request.cookies.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET || process.env.CLASSIQ_PASSWORD);
   if (!person) return json({ error: "Please reopen your invitation." }, 401);
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
   const now = Date.now();
@@ -48,21 +48,19 @@ export async function POST(request: NextRequest) {
   if (accepted.has(id)) return json({ ok: true, id });
   if (pending.has(id)) {
     const success = await pending.get(id);
-    return success ? json({ ok: true, id }) : json({ error: "Email delivery failed. Please try again." }, 502);
+    return success ? json({ ok: true, id }) : json({ error: "Saving failed. Please try again." }, 502);
   }
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.DISCOVERY_TO_EMAIL;
-  const from = process.env.DISCOVERY_FROM_EMAIL;
-  if (!apiKey || !to || !from) return json({ error: "Sending is not configured yet. Please download or copy your answers." }, 503);
+  const formId = process.env.FORMSPREE_FORM_ID;
+  if (!formId || !/^[A-Za-z0-9]{6,32}$/.test(formId)) return json({ error: "Sending is not configured yet. Please download or copy your answers." }, 503);
   const date = typeof data.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(data.date) && Math.abs(Date.parse(data.date) - Date.now()) < 2 * 86_400_000
     ? data.date : new Date().toISOString().slice(0, 10);
   const text = exportAnswers(data.answers, person, date);
   const task = (async () => {
     try {
-      const response = await fetch("https://api.resend.com/emails", {
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", "Idempotency-Key": id },
-        body: JSON.stringify({ from, to: [to], subject: `Discovery answers: ${discovery.client} / ${person} / ${date}`, text }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ name: person, client: discovery.client, submitted_at: date, message: text }),
         signal: AbortSignal.timeout(12_000),
       });
       if (!response.ok) return false;
@@ -73,5 +71,5 @@ export async function POST(request: NextRequest) {
   })();
   pending.set(id, task);
   const success = await task;
-  return success ? json({ ok: true, id }) : json({ error: "Email delivery failed. Please try again." }, 502);
+  return success ? json({ ok: true, id }) : json({ error: "Saving failed. Please try again." }, 502);
 }

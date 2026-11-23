@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   let name: FormDataEntryValue | null;
   try { name = (await request.formData()).get("name"); } catch { name = null; }
   const person = typeof name === "string" ? personFromName(name) : null;
-  const secret = process.env.DISCOVERY_SESSION_SECRET;
+  const secret = process.env.DISCOVERY_SESSION_SECRET || process.env.CLASSIQ_PASSWORD;
   if (!person || !secret) return NextResponse.redirect(new URL("/discovery/frascati/unlock?error=1", request.url), 303);
   const response = NextResponse.redirect(new URL("/discovery/frascati", request.url), 303);
   response.cookies.set("frascati_session", await createDiscoverySession(person, secret), {

@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Frascati Centre | Discovery", robots
 
 export default async function FrascatiDiscovery() {
   const cookieStore = await cookies();
-  const person = await readDiscoverySession(cookieStore.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET);
+  const person = await readDiscoverySession(cookieStore.get("frascati_session")?.value, process.env.DISCOVERY_SESSION_SECRET || process.env.CLASSIQ_PASSWORD);
   if (!person) redirect("/discovery/frascati/unlock");
   return (
     <div className={styles.page}>

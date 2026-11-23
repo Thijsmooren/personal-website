@@ -26,13 +26,11 @@ describe("submission route", () => {
     expect((await POST(request({ ...payload, answers: { ...answers, 20: answers["19"] } }, cookie))).status).toBe(400);
   });
 
-  it("sends one email with the exact export and accepts a repeated ID", async () => {
+  it("stores one response with the exact export and accepts a repeated ID", async () => {
     process.env.DISCOVERY_SESSION_SECRET = secret;
-    process.env.RESEND_API_KEY = "test-key";
-    process.env.DISCOVERY_TO_EMAIL = "owner@example.com";
-    process.env.DISCOVERY_FROM_EMAIL = "forms@example.com";
-    const email = vi.fn().mockResolvedValue({ ok: true });
-    vi.stubGlobal("fetch", email);
+    process.env.FORMSPREE_FORM_ID = "abc123xy";
+    const store = vi.fn().mockResolvedValue({ ok: true });
+    vi.stubGlobal("fetch", store);
     const cookie = await createDiscoverySession("Rachel", secret);
     const answers = emptyAnswers("Rachel");
     answers["9"].selected = ["Event and campaign planning"];
@@ -40,10 +38,11 @@ describe("submission route", () => {
     const payload = { id: crypto.randomUUID(), date, website: "", answers };
     expect((await POST(request(payload, cookie))).status).toBe(200);
     expect((await POST(request(payload, cookie))).status).toBe(200);
-    expect(email).toHaveBeenCalledTimes(1);
-    const [, options] = email.mock.calls[0];
-    expect(options.headers["Idempotency-Key"]).toBe(payload.id);
-    expect(JSON.parse(options.body).text).toBe(exportAnswers(answers, "Rachel", date));
-    expect(JSON.parse(options.body).to).toEqual(["owner@example.com"]);
+    expect(store).toHaveBeenCalledTimes(1);
+    const [url, options] = store.mock.calls[0];
+    expect(url).toBe("https://formspree.io/f/abc123xy");
+    expect(options.headers.Accept).toBe("application/json");
+    expect(JSON.parse(options.body).message).toBe(exportAnswers(answers, "Rachel", date));
+    expect(JSON.parse(options.body).name).toBe("Rachel");
   });
 });

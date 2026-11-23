@@ -83,7 +83,7 @@ export default function DiscoveryForm({ person }: { person: Person }) {
       if (!response.ok || !result.ok) throw new Error(result.error ?? "Could not send your answers.");
       setSent(true); setMessage("");
     } catch (error) {
-      setMessage(`${error instanceof Error ? error.message : "Could not send your answers."} Your answers are still here. Try again, or download a copy and email it to ${discovery.ownerName}.`);
+      setMessage(`${error instanceof Error ? error.message : "Could not save your answers."} Your answers are still here. Try again, or download a copy and send it to ${discovery.ownerName}.`);
     } finally { setSending(false); }
   }
 
@@ -111,7 +111,7 @@ export default function DiscoveryForm({ person }: { person: Person }) {
 
   if (sent) return <main className={styles.card}>
     <p className={styles.eyebrow}>Thank you</p><h1 ref={heading} tabIndex={-1}>Your answers have been sent</h1>
-    <p>Thank you, your answers have been sent to {discovery.ownerName}. We will go through them together on the call.</p>
+    <p>Thank you, your answers have been received. We will go through them together on the call.</p>
     <button type="button" className={styles.secondary} onClick={download}>Download a copy for yourself</button>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
   </main>;
@@ -149,7 +149,7 @@ export default function DiscoveryForm({ person }: { person: Person }) {
         {question.id !== 1 && <button type="button" className={styles.textButton} onClick={() => setStep(discovery.steps.findIndex((item) => item.ids.includes(question.id)))}>Edit</button>}
       </section>;
     })}
-    <p className={styles.privacy}>When you press Send, your answers are emailed to {discovery.ownerName} to prepare for our conversation. Please contact {discovery.ownerName} if you want your answers deleted.</p>
+    <p className={styles.privacy}>When you press Send, your answers are saved for {discovery.ownerName} to review before our conversation. Please contact {discovery.ownerName} if you want your answers deleted.</p>
     <label className={styles.honeypot} aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} /></label>
     <div className={styles.actions}><button type="button" className={styles.secondary} onClick={() => setStep(discovery.steps.length - 1)}>Back</button><button type="button" className={styles.primary} disabled={sending} onClick={send}>{sending ? "Sending…" : "Send my answers"}</button></div>
     <div className={styles.extras}><button type="button" className={styles.secondary} onClick={download}>Download .txt</button><button type="button" className={styles.secondary} onClick={copy}>Copy answers</button><button type="button" className={styles.secondary} onClick={() => window.print()}>Print</button></div>
