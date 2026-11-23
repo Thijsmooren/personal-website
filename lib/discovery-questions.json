@@ -1,0 +1,39 @@
+{
+  "client": "Frascati Centre",
+  "ownerName": "Matthias",
+  "questions": [
+    {
+      "id": 1,
+      "text": "How often do you use AI tools such as ChatGPT or Copilot for work?",
+      "type": "single",
+      "options": ["Never", "I have tried them once or twice", "Occasionally", "Regularly", "Not sure"]
+    },
+    {
+      "id": 2,
+      "text": "How do you feel about using AI at work?",
+      "type": "multi",
+      "options": ["Curious", "Interested but unsure where to start", "I already find it useful", "Concerned about mistakes", "Concerned about privacy", "Sceptical", "Other"]
+    },
+    {
+      "id": 3,
+      "text": "Which areas of your work would you most like to make easier?",
+      "type": "multi",
+      "options": ["Marketing and content", "Events and campaigns", "Communication with tenants, partners or customers", "Planning and coordination", "Centre operations", "Admin and reporting", "Other"]
+    },
+    {
+      "id": 4,
+      "text": "What takes more time than it should in a typical week?",
+      "type": "text"
+    },
+    {
+      "id": 5,
+      "text": "What would you like to get from our conversation?",
+      "type": "text"
+    },
+    {
+      "id": 6,
+      "text": "Is there anything about AI you would like to ask or discuss?",
+      "type": "text"
+    }
+  ]
+}
